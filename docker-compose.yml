@@ -1,0 +1,16 @@
+version: '3.7'
+services:
+    archland.hu:
+        environment:
+            VIRTUAL_HOST: "archland.hu,www.archland.hu"
+            VIRTUAL_PORT: 80
+            LETSENCRYPT_HOST: "archland.hu,www.archland.hu"
+            LETSENCRYPT_EMAIL: "info@phoenixgroup.hu"
+        ports:
+            - "80"
+        volumes:
+            - "./public:/usr/local/apache2/htdocs"
+        container_name: archland.hu
+        network_mode: webproxy
+        image: "httpd:alpine"
+        restart: always
